@@ -22,7 +22,6 @@ pipeline {
     }
 
     stage('Buil Docker') {
-      agent none
       steps {
         sh 'docker build .'
         sh 'docker run versia/prueba1 '   
