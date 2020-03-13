@@ -16,12 +16,17 @@ pipeline {
         }
       }
       steps {
-        sh 'ls -lsa'
         sh 'mvn -B -DskipTests clean package'
       }
     }
 
     stage('Buil Docker') {
+       agent { 
+        docker {
+          image 'maven:3.6.3-jdk-8'
+          args '-v /root/.m2:/root/.m2'
+        }
+      }
       steps {
         sh 'docker build .'
         sh 'docker run versia/prueba1 '   
