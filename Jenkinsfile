@@ -23,9 +23,9 @@ pipeline {
 
     stage('Buil Docker') {
       agent { dockerfile true }
-      steps {
-         docker.build("versia/prueba1")
-      }
+        label 'versia/prueba1'
+        /* additionalBuildArgs  '--build-arg version=1.0.2' */
+        /* args '-v /tmp:/tmp' */
     } 
   }
 }
