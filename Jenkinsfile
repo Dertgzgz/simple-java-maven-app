@@ -8,10 +8,8 @@ node {
     }
     stage('Build App') {
    
-      steps {
-        sh 'ls -lsa'
-        sh 'mvn -B -DskipTests clean package'
-      }
+      sh 'mvn -B -DskipTests clean package'
+     
     }
 
     stage('Build image') {
