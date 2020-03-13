@@ -22,12 +22,9 @@ pipeline {
     }
 
     stage('Buil Docker') {
-      agent { dockerfile true 
-        label 'versia/prueba1'
-        /* additionalBuildArgs  '--build-arg version=1.0.2' */
-        /* args '-v /tmp:/tmp' */
-      }
+      agent none
       steps {
+        sh 'docker build .'
         sh 'docker run versia/prueba1 '   
       } 
     } 
