@@ -8,7 +8,7 @@ pipeline {
       }
     }
 
-    stage('Build') {
+    stage('Build App') {
       agent { 
         docker {
           image 'maven:3.6.3-jdk-8'
@@ -21,15 +21,8 @@ pipeline {
       }
     }
 
-    stage('run') {
-     
-      agent { 
-       
-        docker {
-          image 'maven:3.6.3-jdk-8'
-          args '-v /root/.m2:/root/.m2'
-        }
-      } 
+    stage('Buil Docker') {
+      agent { dockerfile true }
       steps {
          docker.build("versia/prueba1")
       }
