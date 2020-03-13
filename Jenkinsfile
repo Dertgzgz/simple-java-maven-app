@@ -6,6 +6,19 @@ node {
 
         checkout scm
     }
+    stage('Build App') {
+      agent {
+        docker {
+          image 'maven:3.6.3-jdk-8'
+          args '-v /root/.m2:/root/.m2'
+        }
+
+      }
+      steps {
+        sh 'ls -lsa'
+        sh 'mvn -B -DskipTests clean package'
+      }
+    }
 
     stage('Build image') {
         /* This builds the actual image; synonymous to
